@@ -44,7 +44,7 @@
     <nav id="mainav">
       <ul class="clear">
         <li class="active"><a href="index.html">Home</a></li>
-        <li><a class="drop" href="#">Nhớt</a>
+        <li><a class="drop" href="admin/loginAdmin.php">Nhớt</a>
           <ul>
             <li><a href="pages/motul.php">Motul</a></li>
             <li><a href="pages/full-width.html">Resol</a></li>
@@ -66,7 +66,7 @@
         <li><a href="pages/mam.php">Mâm Xe</a></li>
         <li><a href="pages/octitan.php">Ốc Titan</a></li>
         <li><a href="pages/dochoi.php">Đồ Chơi Xe</a></li>
-        <li><a href="pages/voxe.php">Vỏ Xe</a></li>
+        <li><a href="add_danhmuc.php">Vỏ Xe</a></li>
       </ul>
     </nav>
     <!-- ################################################################################################ -->
