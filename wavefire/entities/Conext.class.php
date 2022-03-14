@@ -25,7 +25,20 @@ class Db {
               
     }
 
+    public function select_to_array($queryString){
+      $rows = array();    
+      $result = $this -> query_execute($queryString);
+      if ($result == false){
+          return false;
+      }
+      while ($item = $result -> fetch_assoc()){
+          $rows[] = $item;
+      }
+      return $rows;
+  }
+}
+
   
     
-}
+
 ?>

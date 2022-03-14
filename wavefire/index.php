@@ -45,23 +45,10 @@
       <ul class="clear">
         <li class="active"><a href="index.html">Home</a></li>
         <li><a class="drop" href="admin/loginAdmin.php">Nhớt</a>
-          <ul>
-            <li><a href="pages/motul.php">Motul</a></li>
-            <li><a href="pages/full-width.html">Resol</a></li>
-            <li><a href="pages/sidebar-left.html">Fuchs</a></li>
-            <li><a href="pages/sidebar-right.html">LiQui Moly</a></li>
-            <li><a href="pages/basic-grid.html">CasTrol</a></li>
-            
-          </ul>
+         
         </li>
         <li><a class="drop" href="#">Phuộc Xe</a>
-          <ul>
-            <li><a href="#">Yss</a></li>
-            <li><a href="#">Ohlins</a></li>
-            <li><a href="#">RacingBoy</a></li>
-            <li><a href="#">Nitron</a></li>
-            
-          </ul>
+          
         </li>
         <li><a href="pages/mam.php">Mâm Xe</a></li>
         <li><a href="pages/octitan.php">Ốc Titan</a></li>
@@ -122,35 +109,53 @@
       <p>Tham Gia Và Liên Hệ Trực Tiếp Tại Đây</p>
     </div>
     
-<div class="small-container">
-    <h2 class="title"> Product Display</h2>
+    <div class="small-container">
+    <h2 class="title"> Brand new </h2>
     <div class="row">
-        <div class="col-4">
-            <img src="images/demo/backgrounds/phuoc.jpg">
-            <h4>Red polo collar T-shirt</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
+    <?php  include_once("/entities/sanpham.php"); ?>
+    <?php  
+    foreach($list as $item)
+    {
+extract($item);
 
-            </div>
+echo '<div class="col-4">
+<img src="'.$img.'">
+<h4>'.$Tensp.'</h4>
+<h4>'.$Gia.'</h4>
+<div class="rating">
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star"></i>
+    <i class="fa fa-star-0"></i>
 
+</div>
+<div class="socials-share">
+        <a class="bg-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fab fa-facebook"></span> Share</a>
+        <a class="bg-email" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to&su=&body=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fa fa-envelope"></span> Gmail</a>
+    </div>
+
+</div>';
+
+    }
+    
+    
+    ?>
+        
        
-            <div class="socials-share">
-                    <a class="bg-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fab fa-facebook"></span> Share</a>
-                    <a class="bg-email" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to&su=&body=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fa fa-envelope"></span> Gmail</a>
-                </div>
        
-        </div>
-      
-
-        </div>
+       
+       
+        
 
     </div>
 
 </div>
+
+   
+
+
+
 
 </div>
 
