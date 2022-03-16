@@ -123,7 +123,16 @@ include_once("/entities/sanpham.php");
 extract($item);
 
 echo '<div class="col-4">
+
 <img src="'.$img.'">
+
+</a>
+
+<form action="Detail" method="get">
+
+<button tybe="submit" name="id" value="'.$Masp.'" >'.$Tensp.'</button>
+
+</form>
 <h4>'.$Tensp.'</h4>
 <h4>'.$Gia.'</h4>
 <div class="rating">
