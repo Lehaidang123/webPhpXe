@@ -112,9 +112,13 @@
     <div class="small-container">
     <h2 class="title"> Brand new </h2>
     <div class="row">
-    <?php  include_once("/entities/sanpham.php"); ?>
+   
     <?php  
-    foreach($list as $item)
+include_once("/entities/sanpham.php"); 
+    // $pords= new Sanpham();
+    $pords =Sanpham::getall();
+    $result = $pords;
+    foreach($result as $item)
     {
 extract($item);
 
