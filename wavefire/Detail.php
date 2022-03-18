@@ -87,7 +87,7 @@ Licence URI: https://www.os-templates.com/template-terms
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<div class="wrapper bgded overlay" style="background-image:url('../images/demo/backgrounds/bb.jpg');">
+<div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/bb.jpg');">
     <div id="breadcrumb" class="hoc clear">
         <!-- ################################################################################################ -->
         <article>
@@ -128,8 +128,61 @@ foreach($result as $item)
     <div class="product-description">
         <span>'.$Tensp.'</span>
         <h1>gia </h1>
-        <p>mo ta</p>
-    </div>';
+        <p>'.$Mota.'</p>
+    </div>
+    <div class="product-configuration">
+
+    <!-- Product Color -->
+    <div class="product-color">
+        <span>Màu</span>
+
+        <div class="color-choose">
+            <div>
+                <input data-image="red" type="radio" id="red" name="color" value="red" checked>
+                <label for="red"><span></span></label>
+            </div>
+            <div>
+                <input data-image="blue" type="radio" id="blue" name="color" value="blue">
+                <label for="blue"><span></span></label>
+            </div>
+            <div>
+                <input data-image="black" type="radio" id="black" name="color" value="black">
+                <label for="black"><span></span></label>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Cable Configuration -->
+    <div class="cable-config">
+        <span>Y15ZR</span>
+
+        <div class="cable-choose">
+            <button></button>
+            <button></button>
+            <button></button>
+        </div>
+
+        <a href="#">Hải Đăng Y15ZR</a>
+    </div>
+</div>
+
+
+<!-- Product Pricing -->
+<div class="product-price"></div>
+    <span>'.$Gia.'</span>
+    <a href="~/cart/AddtoCard/@Model.IDSanpham" class="cart-btn">Thêm giỏ hàng</a>
+</div>
+
+
+</div>
+</main>
+<p>
+
+</p>
+    
+    
+    ';
 }
 
 
@@ -143,56 +196,7 @@ foreach($result as $item)
    
 
         <!-- Product Configuration -->
-        <div class="product-configuration">
-
-            <!-- Product Color -->
-            <div class="product-color">
-                <span>Màu</span>
-
-                <div class="color-choose">
-                    <div>
-                        <input data-image="red" type="radio" id="red" name="color" value="red" checked>
-                        <label for="red"><span></span></label>
-                    </div>
-                    <div>
-                        <input data-image="blue" type="radio" id="blue" name="color" value="blue">
-                        <label for="blue"><span></span></label>
-                    </div>
-                    <div>
-                        <input data-image="black" type="radio" id="black" name="color" value="black">
-                        <label for="black"><span></span></label>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Cable Configuration -->
-            <div class="cable-config">
-                <span>Y15ZR</span>
-
-                <div class="cable-choose">
-                    <button></button>
-                    <button></button>
-                    <button></button>
-                </div>
-
-                <a href="#">Hải Đăng Y15ZR</a>
-            </div>
-        </div>
-
-
-        <!-- Product Pricing -->
-        <div class="product-price"></div>
-            <span>12345678</span>
-            <a href="~/cart/AddtoCard/@Model.IDSanpham" class="cart-btn">Thêm giỏ hàng</a>
-        </div>
-
-
-    </div>
-</main>
-<p>
-
-</p>
+      
 <!-- Code đăng bình luận-->
 
 
