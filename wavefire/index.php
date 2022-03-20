@@ -1,3 +1,30 @@
+
+<?php
+require ("/entities/cart.php");
+
+ $data = array();
+$errors = array();
+
+$is_update_action = false;
+
+  $is_update_action = true;
+
+  
+if (!empty($_POST['submitCart'])){
+$data['pro_id'] = isset($_POST['ID']) ? $_POST['ID'] : '';
+
+$data['pro_name'] = isset($_POST['tensp']) ? $_POST['tensp'] : '';
+$data['IMG'] = isset($_POST['img']) ? $_POST['img'] : '';
+$data['pro_gia'] = isset($_POST['gia']) ? $_POST['gia'] : '';
+if (empty($errors)){
+  updateStudent($data['pro_id'], $data['pro_name'], $data['pro_gia'],$data['IMG']);
+    header("Location:viewCart.php");
+}
+
+}
+
+?>
+
 <!DOCTYPE html>
 
 <html lang="">
@@ -115,6 +142,10 @@
    
     <?php  
 include_once("/entities/sanpham.php"); 
+
+
+
+
     // $pords= new Sanpham();
     $pords =Sanpham::getall();
     $result = $pords;
@@ -124,7 +155,7 @@ extract($item);
 
 echo '<div class="col-4">
 
-<img src="'.$img.'">
+<img name="img" value="'.$img.'" src="'.$img.'">
 
 </a>
 
@@ -133,17 +164,31 @@ echo '<div class="col-4">
 <button tybe="submit" name="id" value="'.$Masp.'" >'.$Tensp.'</button>
 
 </form>
-<h4>'.$Tensp.'</h4>
-<h4  style="color:red">'.$Gia.'</h4>
 
 
-<a href="~/cart/AddtoCard/@item.IDSanpham"> <i class="fas fa-shopping-cart"></i></a>
+
+<form   method="post">
+<input type="text" value="'.$Tensp.'" name="tensp"  />
+
+<input type="text" value="'.$img.'" name="img"  />
+<input type="text" value="'.$Gia.'" name="gia"  />
+<input type="text" value="'.$Masp.'" name="ID"  />
+
+<button type="submit" name="submitCart"  value=" ($is_update_action)  "  >  <i class="fas fa-shopping-cart"></i></button>
+  
+
+</form>
+
+
+  
+
 <div class="socials-share">
         <a class="bg-facebook"  style="color:blue;" href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fab fa-facebook"></span> Share</a>
         <a class="bg-email"  style="color:red;" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to&su=&body=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fa fa-envelope"></span> Gmail</a>
     </div>
 
 </div>
+
 
 
 
@@ -155,9 +200,8 @@ echo '<div class="col-4">
     ?>
         
        
-       
-       
-       
+      
+
         
 
     </div>
@@ -165,8 +209,6 @@ echo '<div class="col-4">
 </div>
 
    
-
-
 
 
 </div>
@@ -354,3 +396,4 @@ echo '<div class="col-4">
 
 </body>
 </html>
+
