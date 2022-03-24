@@ -98,15 +98,23 @@ $students = getAllStudents();
                                 <td><img src="<?php echo $item['IMG']; ?>" style="width: 100px; height:100px;" /> </td>
                                 <td><?php echo $item['pro_name']; ?></td>
                                 <td><?php echo $item['pro_id']; ?></td>
+                                <td><?php echo $item['Soluong']; ?></td>
                                 <td>
                                   
-                                        <input class="form-control" type="number" value="@item._shopping_quantity" name="quantity">
-                                        <input type="hidden" value="@item._shopping_sp.IDSanpham" name="IDSanpham" />
+                                        <input class="form-control" type="number" value=" <?php echo $item['Soluong']; ?>" name="quantity">
+                                        <input type="hidden" value="<?php echo $item['Soluong']; ?>" name="IDSanpham" />
                                         <input type="submit" value="Cập nhật" />
                                     
                                 </td>
                                 <td class="text-right"><?php echo $item['pro_gia'];?></td>
-                                <td class="text-right"><a href="~/cart/RemoveCart/@item._shopping_sp.IDSanpham"><i class="fa fa-trash"></i></a> </td>
+
+                                
+                                <td class="text-right">
+                                    
+                                <form method="post" action="deletecart.php">
+                    <input type="hidden" value="<?php echo $item['pro_id']; ?>" name="pro_id"/>
+                    <input onclick="return confirm('Bạn có chắc muốn xóa sinh viên này hay không?');" type="submit" value="Delete" name="delete"/>
+                </form> </td>
                             </tr>
 
                             <tr>

@@ -26,7 +26,7 @@ function deleteStudent($student_id)
 
     foreach($students as $key => $item)
     {
-        if($item['student_id'] == $student_id){
+        if($item['pro_id'] == $student_id){
             unset($students[$key]);
         }
     }
@@ -36,23 +36,40 @@ function deleteStudent($student_id)
     return $students;
 }
 
-function updateStudent($student_id, $student_name, $student_email,$img)
+function updateStudent($student_id, $student_name, $student_email,$img,$Soluong=1)
 {
     $students = getAllStudents();
-
+     
     $new_student = array(
         'pro_id' => $student_id,
         'pro_name' => $student_name,
         'pro_gia' => $student_email,
        'IMG'=> $img,
+       'Soluong' =>$Soluong,
     );
 
     $is_update_action = false;
     foreach ($students as $key => $item)
     {
         if($item['pro_id'] == $student_id){
-            $students[$key] = $new_student;
+        
+
+
+         
+              
+           // $students[$key] = $new_student;
+           $students[$key]   =   $new_student = array(
+                'pro_id' => $student_id,
+                'pro_name' => $student_name,
+                'pro_gia' => $student_email,
+               'IMG'=> $img,
+
+               
+               'Soluong' =>$Soluong+=$Soluong,
+            );
             $is_update_action = true;
+         
+           
         }
     }
 

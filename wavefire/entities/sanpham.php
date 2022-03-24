@@ -37,10 +37,15 @@ public function InsertSP()
   return $result;
 }
 
-  public static function getall()
+  public static function getall($current_page)
   {
-    $sql = "SELECT Masp, Tensp,Gia ,img FROM sanpham";
-
+    $item_page=2;
+   
+    $ofset= ($current_page-1)* $item_page;
+    $sql = "SELECT Masp, Tensp,Gia ,img FROM sanpham LIMIT $item_page OFFSET $ofset";
+    $total = "SELECT Masp, Tensp,Gia ,img FROM sanpham";
+    $t= pdo_query( $total);
+    
     $list=pdo_query($sql);
     return $list;
 

@@ -16,6 +16,8 @@ $data['pro_id'] = isset($_POST['ID']) ? $_POST['ID'] : '';
 $data['pro_name'] = isset($_POST['tensp']) ? $_POST['tensp'] : '';
 $data['IMG'] = isset($_POST['img']) ? $_POST['img'] : '';
 $data['pro_gia'] = isset($_POST['gia']) ? $_POST['gia'] : '';
+
+$data['Soluong']=  1;
 if (empty($errors)){
   updateStudent($data['pro_id'], $data['pro_name'], $data['pro_gia'],$data['IMG']);
     header("Location:viewCart.php");
@@ -141,15 +143,55 @@ if (empty($errors)){
     <div class="row">
    
     <?php  
+    include_once("/model/pdo.php");
 include_once("/entities/sanpham.php"); 
+$item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:1;
+$current_page= !empty($_GET['page'])?$_GET['page']:1;
+
+
+$offset= ($current_page - 1) * $item_per_page;
+$sql = "SELECT  Masp, Tensp,Gia ,img FROM `sanpham` ORDER by 'Masp' ASC LIMIT $item_per_page OFFSET $offset";
+ $list = pdo_query($sql);
+$total= "SELECT Masp, Tensp,Gia ,img FROM sanpham";
+$t= pdo_query($total);
+
+
+
+
+$con=mysqli_connect("localhost","root","","dcxemay");
+// Check connection
+if (mysqli_connect_errno())
+  {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+
+$sql="SELECT  Masp, Tensp,Gia ,img FROM sanpham";
+
+if ($result=mysqli_query($con,$sql))
+  {
+  // Return the number of rows in result set
+  $rowcount=mysqli_num_rows($result);
+  $talopage = ceil($rowcount / $item_per_page);
+  // Free result set
+  mysqli_free_result($result);
+  }
+
+mysqli_close($con);
+
+
+
+
+
+
+
 
 
 
 
     // $pords= new Sanpham();
-    $pords =Sanpham::getall();
+    $pords =Sanpham::getall(1);
     $result = $pords;
-    foreach($result as $item)
+    foreach($list as $item)
     {
 extract($item);
 
@@ -198,9 +240,8 @@ echo '<div class="col-4">
     
     
     ?>
-        
-       
-      
+     
+     
 
         
 
@@ -208,7 +249,10 @@ echo '<div class="col-4">
 
 </div>
 
-   
+      
+<?php
+          include './page.php';
+       ?>
 
 
 </div>
