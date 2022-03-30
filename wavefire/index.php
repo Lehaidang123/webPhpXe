@@ -152,8 +152,8 @@ $current_page= !empty($_GET['page'])?$_GET['page']:1;
 $offset= ($current_page - 1) * $item_per_page;
 $sql = "SELECT  Masp, Tensp,Gia ,img FROM `sanpham` ORDER by 'Masp' ASC LIMIT $item_per_page OFFSET $offset";
  $list = pdo_query($sql);
-$total= "SELECT Masp, Tensp,Gia ,img FROM sanpham";
-$t= pdo_query($total);
+// $total= "SELECT Masp, Tensp,Gia ,img FROM sanpham";
+// $t= pdo_query($total);
 
 
 

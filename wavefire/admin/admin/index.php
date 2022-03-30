@@ -254,7 +254,7 @@
                         </li>
 
                         <li class="submenu">
-                            <a href="users.html">
+                            <a href="../listspAdmin.php">
                                 <i class="fas fa-user"></i>
                                 <span> Users </span>
                             </a>

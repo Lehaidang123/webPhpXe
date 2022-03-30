@@ -28,6 +28,13 @@ $list=pdo_query($sql);
 return $list;
 }
 
+public static function Delete($id)
+{
+$sql = "delete from sanpham where Masp=$id";
+$result= pdo_query($sql);
+return $result;
+
+}
 public function InsertSP()
 {
 
@@ -45,6 +52,18 @@ public function InsertSP()
     $sql = "SELECT Masp, Tensp,Gia ,img FROM sanpham LIMIT $item_page OFFSET $ofset";
     $total = "SELECT Masp, Tensp,Gia ,img FROM sanpham";
     $t= pdo_query( $total);
+    
+    $list=pdo_query($sql);
+    return $list;
+
+  }
+
+  
+  public static function getallSp()
+  {
+    $sql = "SELECT Masp, Tensp,Gia ,img ,Mota FROM sanpham";
+    
+  
     
     $list=pdo_query($sql);
     return $list;
