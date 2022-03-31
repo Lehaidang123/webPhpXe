@@ -20,7 +20,7 @@ $data['pro_gia'] = isset($_POST['gia']) ? $_POST['gia'] : '';
 $data['Soluong']=  1;
 if (empty($errors)){
   updateStudent($data['pro_id'], $data['pro_name'], $data['pro_gia'],$data['IMG']);
-    header("Location:viewCart.php");
+  header("Location:viewCart.php");
 }
 
 }
@@ -77,12 +77,34 @@ if (empty($errors)){
          
         </li>
         <li><a class="drop" href="#">Phuộc Xe</a>
+          <?php  include_once("/entities/danhmuc.php"); 
           
+          $pords =danhmuc::getAlldm();
+          $result = $pords;
+          foreach($result as $item)
+          {
+            extract($item);
+
+
+            echo' 
+            
+           
+            <li><a href="mam.php?ID='.$MaDanhmuc.'">'.$Tendanhmuc.'</a></li>
+            
+            
+            
+            
+            
+            
+            ';
+
+          }
+          
+          
+          ?>
         </li>
-        <li><a href="pages/mam.php">Mâm Xe</a></li>
-        <li><a href="pages/octitan.php">Ốc Titan</a></li>
-        <li><a href="pages/dochoi.php">Đồ Chơi Xe</a></li>
-        <li><a href="add_danhmuc.php">Vỏ Xe</a></li>
+      
+       
       </ul>
     </nav>
     <!-- ################################################################################################ -->
@@ -143,7 +165,7 @@ if (empty($errors)){
     <div class="row">
    
     <?php  
-    include_once("/model/pdo.php");
+    require_once("/model/pdo.php");
 include_once("/entities/sanpham.php"); 
 $item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:1;
 $current_page= !empty($_GET['page'])?$_GET['page']:1;

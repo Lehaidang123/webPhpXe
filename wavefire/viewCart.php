@@ -2,7 +2,7 @@
 require ("/entities/cart.php");
 $students = getAllStudents();
 ?>
-
+ 
 <!DOCTYPE html>
 
 <html>
@@ -177,7 +177,7 @@ $students = getAllStudents();
     <div id="myModal" class="modal fade">
         <div class="modal-dialog modal-login">
             <div class="modal-content">
-                <form action="/examples/actions/confirmation.php" method="post">
+                <form method="post">
                     <div class="modal-header">
                         <h4 class="modal-title">Thanh toán</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -185,26 +185,25 @@ $students = getAllStudents();
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Địa chỉ giao hàng</label>
-                            <input name="diachi" type="text" class="form-control" required="required">
-                        </div>
+                            <input type="text" name="diachi" value="<?php echo isset($_POST["diachi"]) ? $_POST["diachi"] : "" ; ?>" />  
                         <div class="form-group">
                             <label>Họ Tên</label>
-                            <input name="hoten" type="text" class="form-control" required="required">
+                            <input name="hoten" type="text" value="<?php echo isset($_POST["hoten"]) ? $_POST["hoten"] : "" ; ?>" class="form-control">
                         </div>
                         <div class="form-group">
                             <label>SĐT</label>
-                            <input name="sdt" type="text" class="form-control" required="required">
+                            <input name="sdt" type="text" value="<?php echo isset($_POST["sdt"]) ? $_POST["sdt"] : "" ; ?>" class="form-control" >
                         </div>
                         <div class="form-group">
                             <label>Mail</label>
-                            <input name="mail" type="text" class="form-control" required="required">
+                            <input name="mail" type="text" value="<?php echo isset($_POST["mail"]) ? $_POST["mail"] : "" ; ?>"  class="form-control" >
                         </div>
                     </div>
                  
                     <div class="modal-footer justify-content-between">
                       
                        
-                        <input type="submit" class="btn btn-primary" value="Thanh Toán">
+                        <input type="submit" name="submit" class="btn btn-primary" value="Thanh Toán">
                     </div>
                 </form>
             </div>
@@ -212,7 +211,33 @@ $students = getAllStudents();
     </div>
 
 
-      
+    <?php  include_once("/entities/order.php"); ?>
+<?php
+   
+
+    if(isset($_POST["submit"])){
+
+        $diachi = $_POST["diachi"];
+       
+$Tenkh=$_POST["hoten"];
+$sdt=$_POST["sdt"];
+$mail=$_POST["mail"];
+        $newProduct = new oder( $diachi,$Tenkh,$sdt,$mail);
+
+        $result = $newProduct ->save();
+        header("Location:index.php");
+        if(!$result)
+        {
+           echo " thành công";
+          
+        }
+        else {
+           
+        }
+    }
+?>
+
+
     
 <!-- Footer -->
 

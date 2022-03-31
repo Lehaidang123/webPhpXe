@@ -1,4 +1,4 @@
-<?php  include_once("/entities/sanpham.php"); ?>
+<?php  include_once("/entities/order.php"); ?>
 <?php
    
 
@@ -7,7 +7,7 @@
         $productName = $_POST["txtName"];
        
 
-        $newProduct = new Product( $productName);
+        $newProduct = new oder( $productName);
 
         $result = $newProduct ->save();
         if(!$result)
