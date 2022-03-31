@@ -89,7 +89,7 @@ if (empty($errors)){
             echo' 
             
            
-            <li><a href="mam.php?ID='.$MaDanhmuc.'">'.$Tendanhmuc.'</a></li>
+            <li><a href="Danhmuc.php?ID='.$MaDanhmuc.'">'.$Tendanhmuc.'</a></li>
             
             
             
