@@ -211,7 +211,11 @@ $students = getAllStudents();
     </div>
 
 
-    <?php  include_once("/entities/order.php"); ?>
+    <?php  include_once("/entities/order.php");
+     include_once("/entities/oderdetail.php");
+    
+    
+    ?>
 <?php
    
 
@@ -225,15 +229,23 @@ $mail=$_POST["mail"];
         $newProduct = new oder( $diachi,$Tenkh,$sdt,$mail);
 
         $result = $newProduct ->save();
-        header("Location:index.php");
-        if(!$result)
+
+        foreach($students as $item)
+
         {
-           echo " thành công";
-          
+            extract($item);
+
+
+            $newdetail = new oderdetail($Soluong,$pro_gia,$pro_id,2);
+
+ $result = $newdetail ->save();
+
+            $students = deleteall();
+            header("Location:pay.php");
+            return pay.php;
         }
-        else {
-           
-        }
+       
+       
     }
 ?>
 

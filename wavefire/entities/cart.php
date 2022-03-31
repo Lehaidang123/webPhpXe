@@ -19,7 +19,15 @@ function getStudent($student_id)
     }
     return array();
 }
+function deleteall()
+{
+    $students = getAllStudents();
+    unset($students);
+    $_SESSION['students'] = $students;
 
+    return $students;
+
+}
 function deleteStudent($student_id)
 {
     $students = getAllStudents();
