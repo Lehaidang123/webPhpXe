@@ -239,10 +239,15 @@ $mail=$_POST["mail"];
             $newdetail = new oderdetail($Soluong,$pro_gia,$pro_id,2);
 
  $result = $newdetail ->save();
+                if(!empty($result))
 
-            $students = deleteall();
-            header("Location:pay.php");
-            return pay.php;
+                {
+                    $students = deleteall();
+                    header("Location:pay.php");
+
+                }
+           
+         
         }
        
        
