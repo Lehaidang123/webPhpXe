@@ -13,9 +13,7 @@ Licence URI: https://www.os-templates.com/template-terms
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-<link href="layout/styles/share.css" rel="stylesheet" type="text/css" media="all">
-<link href="layout/styles/style.css" rel="stylesheet" type="text/css" media="all">
+
 <link href="layout/styles/demo.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body >
@@ -237,8 +235,8 @@ foreach($result as $item)
         </nav>
      
 </div>
-<!-- ################################################################################################ -->
-<!-- / main body -->
+
+
 <div class="clear"></div>
   </main>
 </div>

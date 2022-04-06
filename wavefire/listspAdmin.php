@@ -1,3 +1,13 @@
+<?php
+include_once("/entities/sanpham.php");
+   $sanpham = new Sanpham();
+   if (isset($_GET['Masp'])) {
+       $id = $_GET['Masp'];
+       $delete_sp = $sanpham->delete($id);
+   } else {
+   }
+   ?>
+
 <div class="grid_10">
 	<div class="box round first grid">
 		<h2>Danh Sách sản phẩm</h2>
@@ -8,14 +18,21 @@
   
 
 			<a href="index.php">Trang chủ</a>
+            <?php
+
+if (isset($delete_sp)) {
+    echo $delete_sp;
+}
+?>
 			<table class="data display datatable" id="example">
 				<thead>
 					<tr>
 						<th>Mã sản phẩm</th>
 						<th>Tên sản phẩm</th>
 						<th>giá</th>
-						<th>Mã danh mục</th>
 						<th>IMG</th>
+						<th>Mô tả</th>
+						<th>Mã Danh mục</th>
 						
 						<th>Action</th>
 					</tr>
@@ -42,11 +59,9 @@
 				   <td>'.$Gia.'</td>
 				   <td>'.$img.'</td>
 				   <td>'.$Mota.'</td>
+                   <td>'.$MaDanhmuc.'</td>
 				   <td>
-				   <form action="deletesp.php" method="get">
-				   
-				   <button name="delete" value="'.$Masp.'" type="submit">Xóa</button>
-					 </form>
+				  <a href="?Masp='.$Masp.'">Xóa</a>
 				   </td>
 				 
 				 
@@ -135,6 +150,27 @@ $students = getAllStudents();
                             <label>Mô tả</label>
                             <input name="mail" type="text" value="<?php echo isset($_POST["mail"]) ? $_POST["mail"] : "" ; ?>"  class="form-control" >
                         </div>
+                        <div class="form-group">
+                            <label>Danh mục</label>
+
+                          <select name="MaDanhmuc">
+ <?php  include_once("/entities/danhmuc.php"); 
+          
+          $pords =danhmuc::getAlldm();
+          $result = $pords;
+          foreach($result as $item)
+          {
+            extract($item);
+            echo ' <option value='.$MaDanhmuc.'>'.$Tendanhmuc.'</option>';
+
+                         
+                        
+
+          }
+
+          ?>
+                          </select>
+                        </div>
                     </div>
                  
                     <div class="modal-footer justify-content-between">
@@ -162,13 +198,17 @@ $students = getAllStudents();
 $Tenkh=$_POST["hoten"];
 $sdt=$_POST["sdt"];
 $mail=$_POST["mail"];
-	   $newProduct = new sp( $diachi,$Tenkh,$sdt,$mail);
+$Madm = $_POST["MaDanhmuc"];
+	   $newProduct = new sp( $diachi,$Tenkh,$sdt,$mail,$Madm);
 
 	   $result = $newProduct ->save();
+      
 	  
 	   if(!$result)
 	   {
 		  echo " thành công";
+        
+         
 		 
 	   }
 	   else {

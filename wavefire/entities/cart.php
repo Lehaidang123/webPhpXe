@@ -28,6 +28,20 @@ function deleteall()
     return $students;
 
 }
+function total()
+{
+   
+    $students = getAllStudents();
+    
+    foreach ($students as $item)
+    {
+       $tong= $item['pro_gia'] +$item['Soluong'];
+            return $tong;
+        
+    }
+    return array();
+
+}
 function deleteStudent($student_id)
 {
     $students = getAllStudents();

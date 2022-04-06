@@ -254,16 +254,16 @@
                         </li>
 
                         <li class="submenu">
-                            <a href="../listspAdmin.php">
+                            <a href="http://localhost/webxe/webPhpXe/wavefire/listspAdmin.php">
                                 <i class="fas fa-user"></i>
-                                <span> Users </span>
+                                <span> Quản lý sản phẩm </span>
                             </a>
                         </li>
 
                         <li class="submenu">
-                            <a href="blog.html">
+                            <a href="http://localhost/webxe/webPhpXe/wavefire/add_danhmuc.php">
                                 <i class="fas fa-file-alt"></i>
-                                <span> Blog </span>
+                                <span> Quản lý danh mục </span>
                             </a>
                         </li>
 

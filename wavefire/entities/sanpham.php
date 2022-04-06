@@ -4,22 +4,7 @@
     
 include_once("/model/pdo.php");
 class Sanpham{
-  public $Masp;
-  public $Tensp1;
-//   public Gia;
-  public $mota;
-  //public $soluong;
-//   public img;
-//   public MaDm;
-  public function __construct($pro_name,$Mota){
-    $this->Tensp1 = $pro_name;
-    // $this->Gia = $price;
-    $this->mota = $Mota;
-    // $this-> soluong=$SL;
-    // $this->img=$IMG;
-    // $this -> MaDm= $madm;
-   
-}
+ 
 
 public static function SelectId($id)
 {
@@ -30,18 +15,10 @@ return $list;
 
 public static function Delete($id)
 {
-$sql = "delete from sanpham where Masp=$id";
-$result= pdo_query($sql);
+$sql = "DELETE  FROM sanpham WHERE Masp = '$id' ";
+$result= pdo_execute($sql);
 return $result;
 
-}
-public function InsertSP()
-{
-
-  $sql = "INSERT INTO sanpham ( Tensp,Mota)
-  VALUES ('$this->Tensp1','$this->mota')";
-  $result = pdo_execute($sql);
-  return $result;
 }
 
   public static function getall($current_page)
@@ -61,7 +38,7 @@ public function InsertSP()
   
   public static function getallSp()
   {
-    $sql = "SELECT Masp, Tensp,Gia ,img ,Mota FROM sanpham";
+    $sql = "SELECT Masp, Tensp,Gia ,img ,Mota ,MaDanhmuc FROM sanpham";
     
   
     

@@ -110,11 +110,12 @@ if (empty($errors)){
     <!-- ################################################################################################ -->
     <div id="searchform">
       <div>
-        <form action="#" method="post">
+        <form action="search.php?quanly=timkiem" method="post">
           <fieldset>
             <legend>Tìm Kiếm:</legend>
-            <input type="text" placeholder="Enter search term&hellip;">
-            <button type="submit"><i class="fas fa-search"></i></button>
+            <input type="text" placeholder="Tìm kiếm sản phẩm...&hellip;" name="tukhoa" style="color: black; background:beige" />
+              <button type="submit" name="timkiem"><i class="fas fa-search"></i></button>
+
           </fieldset>
         </form>
       </div>
@@ -247,7 +248,7 @@ echo '<div class="col-4">
   
 
 <div class="socials-share">
-        <a class="bg-facebook"  style="color:blue;" href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fab fa-facebook"></span> Share</a>
+        <a class="bg-facebook"  style="color:blue;" href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage target="_blank"><span class="fab fa-facebook"></span> Share</a>
         <a class="bg-email"  style="color:red;" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to&su=&body=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fa fa-envelope"></span> Gmail</a>
     </div>
 

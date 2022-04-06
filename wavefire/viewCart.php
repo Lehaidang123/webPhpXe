@@ -123,14 +123,16 @@ $students = getAllStudents();
                                 <td></td>
                                 <td></td>
                                 <td>Tổng tiền</td>
-                                <td class="text-right">666666</td>
+                                  
+                            
+                                <td class="text-right"></td>
                             </tr>
 
                         </tbody>
 
                         <?php } ?>
 
-                    
+                   
                     <tfoot>
                         <tr>
                             <td></td>
@@ -226,29 +228,36 @@ $students = getAllStudents();
 $Tenkh=$_POST["hoten"];
 $sdt=$_POST["sdt"];
 $mail=$_POST["mail"];
-        $newProduct = new oder( $diachi,$Tenkh,$sdt,$mail);
-
+        $newProduct = new oder("", $diachi,$Tenkh,$sdt,$mail);
+              
         $result = $newProduct ->save();
-
-        foreach($students as $item)
-
+      
+        if(empty($result))
         {
-            extract($item);
 
+            foreach($students as $item)
 
-            $newdetail = new oderdetail($Soluong,$pro_gia,$pro_id,2);
+            {
+                extract($item);
+    
+            
+                $newdetail = new oderdetail($Soluong,$pro_gia,$pro_id,$sdt);
+    
+     $result = $newdetail ->save();
+                  
+                         $students = deleteall();
+                        
+                    
+               
+             
+            }
 
- $result = $newdetail ->save();
-                if(!empty($result))
-
-                {
-                    $students = deleteall();
-                    header("Location:pay.php");
-
-                }
-           
-         
         }
+        else{
+
+            echo ' roong';
+        }
+     
        
        
     }
