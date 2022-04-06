@@ -268,10 +268,10 @@
                         </li>
 
                         <li class="submenu">
-                            <a href="mail-all.html">
+                            <a href="http://localhost/webxe/webPhpXe/wavefire/listoder">
                                 <span class="label radius-circle bg-danger float-right">18</span>
                                 <i class="fas fa-envelope"></i>
-                                <span> Mailbox </span>
+                                <span> Danh sách oder </span>
                             </a>
                         </li>
 

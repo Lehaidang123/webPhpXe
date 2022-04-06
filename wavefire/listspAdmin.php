@@ -3,7 +3,7 @@ include_once("/entities/sanpham.php");
    $sanpham = new Sanpham();
    if (isset($_GET['Masp'])) {
        $id = $_GET['Masp'];
-       $delete_sp = $sanpham->delete($id);
+       $delete_sp = $sanpham->Delete($id);
    } else {
    }
    ?>
@@ -61,7 +61,11 @@ if (isset($delete_sp)) {
 				   <td>'.$Mota.'</td>
                    <td>'.$MaDanhmuc.'</td>
 				   <td>
-				  <a href="?Masp='.$Masp.'">Xóa</a>
+				
+
+
+                  <a   href="update_sp.php?Masp='.$Masp.'"><i class="fa fa-edit blue-color"></i></a>
+                  <a   href="?Masp='.$Masp.'"><i  class="fa fa-trash" aria-hidden="true"  ></i></a>
 				   </td>
 				 
 				 

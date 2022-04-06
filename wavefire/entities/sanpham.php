@@ -6,6 +6,29 @@ include_once("/model/pdo.php");
 class Sanpham{
  
 
+
+
+
+
+
+public static function update_sp($id,$tensp,$gia,$img,$mota,$madm)
+{
+
+  $sql =  "UPDATE sanpham SET Tensp = '$tensp' , Gia='$gia', img='$img',Mota = '$mota' ,MaDanhmuc='$madm' WHERE Masp = '$id'";
+    $result = pdo_execute($sql);
+    return $result;
+}
+
+
+
+
+public static function selectIDdm($id)
+{
+
+  $sql = "SELECT `Masp`, `Tensp`, `Soluong`, `Mota`, `img`, `Gia`, `MaDanhmuc` FROM `sanpham` WHERE MaDanhmuc=$id";
+$list=pdo_query($sql);
+return $list;
+}
 public static function SelectId($id)
 {
 $sql = "SELECT `Masp`, `Tensp`, `Soluong`, `Mota`, `Img`, `Gia`, `MaDanhmuc` FROM `sanpham` WHERE Masp=$id";

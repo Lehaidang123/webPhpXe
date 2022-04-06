@@ -168,7 +168,7 @@ if (empty($errors)){
     <?php  
     require_once("/model/pdo.php");
 include_once("/entities/sanpham.php"); 
-$item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:1;
+$item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:2;
 $current_page= !empty($_GET['page'])?$_GET['page']:1;
 
 
@@ -218,31 +218,28 @@ mysqli_close($con);
     {
 extract($item);
 
+
+
+
+
+
 echo '<div class="col-4">
 
-<img name="img" value="'.$img.'" src="'.$img.'">
 
+<a href="Detail?id='.$Masp.'"><img name="img" value="'.$img.'" src="'.$img.'"></a>
 </a>
 
-<form action="Detail" method="get">
+<h4>
+'.$Tensp.'                      
+</h4>
+                    <h1> '.$Gia.'</h1>
+<a href="addtocart.php?id='.$Masp.'"> <i class="fas fa-shopping-cart"></i></a>
 
-<button tybe="submit" name="id" value="'.$Masp.'" >'.$Tensp.'</button>
-
-</form>
 
 
 
-<form   method="post">
-<input type="text" value="'.$Tensp.'" name="tensp"  />
 
-<input type="text" value="'.$img.'" name="img"  />
-<input type="text" value="'.$Gia.'" name="gia"  />
-<input type="text" value="'.$Masp.'" name="ID"  />
 
-<button type="submit" name="submitCart"  value=" ($is_update_action)  "  >  <i class="fas fa-shopping-cart"></i></button>
-  
-
-</form>
 
 
   
@@ -258,6 +255,8 @@ echo '<div class="col-4">
 
 
 ';
+
+
 
     }
     

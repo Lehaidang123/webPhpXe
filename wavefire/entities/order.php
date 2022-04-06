@@ -5,14 +5,14 @@
 
 
     class oder{
-        public $idoder;
+       
         public $diachi;
         
 public $tenkh;
 public $sdt;
 public $mail;
-        public function __construct($idoder,$dc,$ten,$dt,$Mail){
-          $this->idoder=$idoder;
+        public function __construct($dc,$ten,$dt,$Mail){
+     
             $this->diachi = $dc;
             $this->tenkh = $ten;
             $this->sdt=$dt;
@@ -38,7 +38,7 @@ public $mail;
       die("Connection failed: " . mysqli_connect_error());
     }
     
-    $sql = "INSERT INTO oder ( Diachi,Tenkh,Sdt,Mail)
+    $sql = "INSERT INTO oder (Ngay,Diachi,Tenkh,Sdt,Mail)
     VALUES ('$this->diachi','$this->tenkh','$this->sdt','$this->mail')";
     
     if (mysqli_query($conn, $sql)) {

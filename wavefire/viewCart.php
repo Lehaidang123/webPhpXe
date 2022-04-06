@@ -1,6 +1,8 @@
 <?php
 require ("/entities/cart.php");
 $students = getAllStudents();
+$total = 0;
+$count = 0;
 ?>
  
 <!DOCTYPE html>
@@ -59,14 +61,20 @@ $students = getAllStudents();
                         </button>
                     </div>
                 </div>
+                <?php foreach ($students as $item) {
+                                if ($item['pro_id'] == $item['pro_id']) {
+                                    $count = $count + 1;
+                                }
+                            } ?>
                 <a class="btn btn-success btn-sm ml-3" href="cart.html">
                     <i class="fa fa-shopping-cart"></i>
-                    <span class="badge badge-light"> </span>
+                    <span class="badge badge-light"> <?php echo $count ;?> </span>
                 </a>
             </form>
         </div>
     </div>
 </nav>
+
 <section class="jumbotron text-center">
     <div class="container">
         <h1 class="jumbotron-heading">Giỏ hàng Y15ZR </h1>
@@ -85,7 +93,8 @@ $students = getAllStudents();
                             <th scope="col">Danh mục</th>
                             <th scope="col" class="text-center">Số lượng</th>
                             <th scope="col" class="text-right">Giá</th>
-                            <th> </th>
+                            <th scope="col" class="text-right">Tổng tiền</th>
+
                         </tr>
                     </thead>
 
@@ -99,21 +108,24 @@ $students = getAllStudents();
                                 <td><?php echo $item['pro_name']; ?></td>
                                 <td><?php echo $item['pro_id']; ?></td>
                                 <td><?php echo $item['Soluong']; ?></td>
-                                <td>
-                                  
-                                        <input class="form-control" type="number" value=" <?php echo $item['Soluong']; ?>" name="quantity">
-                                        <input type="hidden" value="<?php echo $item['Soluong']; ?>" name="IDSanpham" />
-                                        <input type="submit" value="Cập nhật" />
-                                    
-                                </td>
-                                <td class="text-right"><?php echo $item['pro_gia'];?></td>
 
+                                <?php
+                                        $a = $item['pro_gia'];
+                                        $b = $item['Soluong'];
+                                        $total_sp = $a * $b;
+
+                                        ?>
+                                
+                                <td class="text-right"><?php echo $item['pro_gia'];?></td>
+                                <td class="text-right"><?php echo $total_sp;
+
+                                    $total += $total_sp; ?> VNĐ</td>
                                 
                                 <td class="text-right">
                                     
                                 <form method="post" action="deletecart.php">
                     <input type="hidden" value="<?php echo $item['pro_id']; ?>" name="pro_id"/>
-                    <input onclick="return confirm('Bạn có chắc muốn xóa sinh viên này hay không?');" type="submit" value="Delete" name="delete"/>
+                    <input onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này hay không?');" type="submit" value="Delete" name="delete"/>
                 </form> </td>
                             </tr>
 
@@ -148,7 +160,7 @@ $students = getAllStudents();
                             <td></td>
                             <td></td>
                             <td><strong>Tiền phải thanh toán </strong></td>
-                            <td class="text-right"><strong>Tổng tiền </strong></td>
+                            <td class="text-right"><strong> <?php echo $total; ?> VNĐ </strong></td>
                         </tr>
                     </tfoot>
 
@@ -228,7 +240,9 @@ $students = getAllStudents();
 $Tenkh=$_POST["hoten"];
 $sdt=$_POST["sdt"];
 $mail=$_POST["mail"];
-        $newProduct = new oder("", $diachi,$Tenkh,$sdt,$mail);
+$mydate=getdate(date("U"));
+                    echo "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]";
+        $newProduct = new oder( $diachi,$Tenkh,$sdt,$mail);
               
         $result = $newProduct ->save();
       
@@ -246,6 +260,7 @@ $mail=$_POST["mail"];
      $result = $newdetail ->save();
                   
                          $students = deleteall();
+                         
                         
                     
                
