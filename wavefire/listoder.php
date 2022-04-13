@@ -14,7 +14,7 @@ include("/entities/oderlist.php");
 			?>
         
 
-			<a href="index.php">Trang chủ</a>
+			<a href="http://localhost/webxe/webPhpXe/wavefire/admin/admin/index.php">Trang chủ</a>
             <a href="excelfile.php" >Xuất file excel</a>
 			<table class="data display datatable" id="example">
 				<thead>

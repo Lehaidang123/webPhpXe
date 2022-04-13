@@ -72,7 +72,7 @@ if (!empty($_POST['submitCart'])) {
             <!-- ################################################################################################ -->
             <nav id="mainav">
                 <ul class="clear">
-                    <li class="active"><a href="index.php">Home</a></li>
+                    <li class="active"><a href="http://localhost/webxe/webPhpXe/wavefire/">Home</a></li>
                     <li><a class="drop" href="admin/loginAdmin.php">Nhớt</a>
 
                     </li>
@@ -135,7 +135,7 @@ if (!empty($_POST['submitCart'])) {
             </div>
 
             <div class="small-container">
-                <h2 class="title"> Sản phẩm tìm kiếm: </h2>
+                <h2 class="title">Sản phẩm tìm kiếm </h2>
                 <h3> sản phẩm tìm kiếm: <?php echo $_POST['tukhoa'] ?></h3>
                 <div class="row">
 
@@ -186,40 +186,44 @@ if (!empty($_POST['submitCart'])) {
                     // $pords = Sanpham::getall(1);
                     // $result = $pords;
                     if ($list == null) {
-                        echo '<h1>Không tìm thấy sản phẩm cần tìm kiếm</h1>';
+                        echo '<h1>Không tìm thấy sản phẩm/h1>';
                     }
                     foreach ($list as $item) {
                         extract($item);
 
                         echo '<div class="col-4">
-                                <img name="img" value="' . $img . '" src="' . $img . '">
 
-                                </a>
 
-                                <form action="Detail" method="get">
-
-                                <button tybe="submit" name="id" value="' . $Masp . '" >' . $Tensp . '</button>
-
-                                </form>
-                                <form   method="post">
-                                <h2>' . $Tensp . ' </h2>
-                                <input type="text" value="' . $Tensp . '" name="tensp"  />
-
-                                <input type="text" value="' . $img . '" name="img"  />
-                                
-                                <input type="text" value="' . $Gia . '" name="gia"  />
-                                
-                                <input type="text" value="' . $Masp . '" name="ID"  />
-
-                                <button type="submit" name="submitCart"  value=" ($is_update_action)  "  >  <i class="fas fa-shopping-cart"></i></button>
-                                
-                                </form>
-
-                                <div class="socials-share">
-                                    <a class="bg-facebook"  style="color:blue;" href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fab fa-facebook"></span> Share</a>
-                                    <a class="bg-email"  style="color:red;" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to&su=&body=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fa fa-envelope"></span> Gmail</a>
-                                </div>
-                            </div>';
+                        <a href="Detail?id='.$Masp.'"><img name="img" value="'.$img.'" src="'.$img.'"></a>
+                        </a>
+                        
+                        <h4>
+                        '.$Tensp.'                      
+                        </h4>
+                        <h1 style="color:red;"> '.number_format($Gia, 0, '', ',').'VNĐ</h1>
+                        <a href="addtocart.php?id='.$Masp.'"> <i class="fas fa-shopping-cart"></i></a>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                          
+                        
+                        <div class="socials-share">
+                                <a class="bg-facebook"  style="color:blue;" href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage target="_blank"><span class="fab fa-facebook"></span> Share</a>
+                                <a class="bg-email"  style="color:red;" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to&su=&body=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fa fa-envelope"></span> Gmail</a>
+                            </div>
+                        
+                        </div>
+                        
+                        
+                        
+                        
+                        ';
+                        
                     }
 
                     ?>

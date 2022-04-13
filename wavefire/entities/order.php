@@ -38,7 +38,7 @@ public $mail;
       die("Connection failed: " . mysqli_connect_error());
     }
     
-    $sql = "INSERT INTO oder (Ngay,Diachi,Tenkh,Sdt,Mail)
+    $sql = "INSERT INTO oder (Diachi,Tenkh,Sdt,Mail)
     VALUES ('$this->diachi','$this->tenkh','$this->sdt','$this->mail')";
     
     if (mysqli_query($conn, $sql)) {

@@ -17,7 +17,7 @@ include_once("/entities/sanpham.php");
   <!-- Modal HTML -->
   
 
-			<a href="index.php">Trang chủ</a>
+			<a href="http://localhost/webxe/webPhpXe/wavefire/admin/admin/index.php">Trang chủ</a>
             <?php
 
 if (isset($delete_sp)) {
@@ -141,7 +141,7 @@ $students = getAllStudents();
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Tên sản phẩm</label>
-                            <input type="text" name="diachi" value="<?php echo isset($_POST["diachi"]) ? $_POST["diachi"] : "" ; ?>" />  
+                            <input type="text" name="diachi" value="<?php echo isset($_POST["diachi"]) ? $_POST["diachi"] : "" ; ?>" class="form-control />  
                         <div class="form-group">
                             <label>Giá</label>
                             <input name="hoten" type="text" value="<?php echo isset($_POST["hoten"]) ? $_POST["hoten"] : "" ; ?>" class="form-control">

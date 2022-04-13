@@ -33,9 +33,12 @@ if (empty($errors)){
 
 <title>HẢI ĐĂNG Y15ZR</title>
 <meta charset="utf-8">
+
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link href="layout/styles/style.css" rel="stylesheet" type="text/css" media="all">
+
 
 </head>
 <body id="top">
@@ -72,13 +75,13 @@ if (empty($errors)){
     <!-- ################################################################################################ -->
     <nav id="mainav">
       <ul class="clear">
-        <li class="active"><a href="index.html">Home</a></li>
+        <li class="active"><a href="http://localhost/webxe/webPhpXe/wavefire/">Home</a></li>
         <li><a class="drop" href="admin/loginAdmin.php">Nhớt</a>
-         
+        <li><a class="drop" href="http://localhost/webxe/webPhpXe/wavefire/viewCart.php"><i class="fas fa-shopping-cart"></i></a>
         </li>
-        <li><a class="drop" href="#">Phuộc Xe</a>
+       
           <?php  include_once("/entities/danhmuc.php"); 
-          
+         
           $pords =danhmuc::getAlldm();
           $result = $pords;
           foreach($result as $item)
@@ -168,7 +171,7 @@ if (empty($errors)){
     <?php  
     require_once("/model/pdo.php");
 include_once("/entities/sanpham.php"); 
-$item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:2;
+$item_per_page=!empty($_GET['per_page'])?$_GET['per_page']:5;
 $current_page= !empty($_GET['page'])?$_GET['page']:1;
 
 
@@ -232,7 +235,7 @@ echo '<div class="col-4">
 <h4>
 '.$Tensp.'                      
 </h4>
-                    <h1> '.$Gia.'</h1>
+                    <h1 style="color:red;"> '.number_format($Gia, 0, '', ',').'VNĐ</h1>
 <a href="addtocart.php?id='.$Masp.'"> <i class="fas fa-shopping-cart"></i></a>
 
 
@@ -246,7 +249,7 @@ echo '<div class="col-4">
 
 <div class="socials-share">
         <a class="bg-facebook"  style="color:blue;" href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage target="_blank"><span class="fab fa-facebook"></span> Share</a>
-        <a class="bg-email"  style="color:red;" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to&su=&body=https://www.facebook.com/All-RacingShop-106377424321048/?ref=pages_you_manage" target="_blank"><span class="fa fa-envelope"></span> Gmail</a>
+        <a class="bg-email"  style="color:red;" href="https://mail.google.com/mail/u/0/?view=cm&fs=1&to&su=&body=http://localhost/webxe/webPhpXe/wavefire/Sp='.$Tensp.'" target="_blank"><span class="fa fa-envelope"></span> Gmail</a>
     </div>
 
 </div>
@@ -345,7 +348,7 @@ echo '<div class="col-4">
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 
-<div class="zalo-chat-widget" data-oaid="579745863508352884" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="1000" data-width="350" data-height="420"></div>
+<div class="zalo-chat-widget" data-oaid="457773010480852343" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="1000" data-width="350" data-height="420"></div>
 
 
 <!-- ################################################################################################ -->

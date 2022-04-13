@@ -72,7 +72,7 @@ if (empty($errors)){
     <!-- ################################################################################################ -->
     <nav id="mainav">
       <ul class="clear">
-        <li class="active"><a href="index.html">Home</a></li>
+        <li class="active"><a href="http://localhost/webxe/webPhpXe/wavefire/">Home</a></li>
         <li><a class="drop" href="admin/loginAdmin.php">Nhớt</a>
          
         </li>
@@ -226,7 +226,7 @@ echo '<div class="col-4">
 <h4>
 '.$Tensp.'                      
 </h4>
-                    <h1> '.$Gia.'</h1>
+                    <h1 style="color:red;" > '.number_format($Gia, 0, '', ',').'VNĐ</h1>
 <a href="addtocart.php?id='.$Masp.'"> <i class="fas fa-shopping-cart"></i></a>
 
 

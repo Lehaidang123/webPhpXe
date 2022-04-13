@@ -16,6 +16,12 @@ Licence URI: https://www.os-templates.com/template-terms
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link href="layout/styles/style.css" rel="stylesheet" type="text/css" media="all">
 <link href="layout/styles/demo.css" rel="stylesheet" type="text/css" media="all">
+<link href="layout/styles/cmt.scss" rel="stylesheet"  media="all">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body >
 <!-- ################################################################################################ -->
@@ -52,7 +58,7 @@ Licence URI: https://www.os-templates.com/template-terms
         <!-- ################################################################################################ -->
         <nav id="mainav">
             <ul class="clear">
-                <li class="active"><a href="~/Home/Trangchu">Home</a></li>
+                <li class="active"><a href="http://localhost/webxe/webPhpXe/wavefire/">Home</a></li>
                 <li>
                     <a href="~/Danhmuc/Nhot">Nhớt</a>
 
@@ -199,20 +205,38 @@ foreach($result as $item)
 <!-- Code đăng bình luận-->
 
 
-<br />
-<hr />
-<div class="col-md-10">
-    <h4>Ý kiến sản phẩm</h4>
-    <form action="#" method="post">
-        <textarea placeholder="Viết bình luận..." class="form-control" rows="5" cols="100"></textarea><br />
-        <input type="submit" value="Gửi ý kiến" class="cart-btn" />
-    </form>
-</div>
-<hr />
+
 <!--code
 
 
+<?php 
+  include_once("/entities/Add_cmt.php");
 
+  
+
+?>
+<?php
+  
+   
+
+  if(isset($_POST["submitcmt"])){
+
+      $productName = $_POST["txtName"];
+     $noidung =$_POST["txtCmt"];
+
+      $newProduct = new Cmt( $noidung,$productName,$_GET["id"]);
+
+      $result = $newProduct ->save();
+      if(!$result)
+      {
+         echo " thành công";
+       
+      }
+      else {
+         
+      }
+  }
+?>
 
 
 <div class="wrapper row3">
@@ -248,9 +272,9 @@ foreach($result as $item)
     <footer id="footer" class="hoc clear">
         <!-- ################################################################################################ -->
         <div class="one_third first">
-            <h6 class="heading">Thông Tin Liên Hệ</h6>
-            <p>Số 5 cây cám khu phố 1 bình hưng hòa B  Bình Tân HCM.</p>
-            <p class="btmspace-30">KẾT NỐI VỚI CHÚNG TÔI<a href="#"><i class="fa fa-arrow-right"></i></a></p>
+            <h6  style="color:antiquewhite;" class="heading">Thông Tin Liên Hệ</h6>
+            <p style="color:antiquewhite;" >Số 5 cây cám khu phố 1 bình hưng hòa B  Bình Tân HCM.</p>
+            <p style="color:antiquewhite;" class="btmspace-30">KẾT NỐI VỚI CHÚNG TÔI<a href="#"><i class="fa fa-arrow-right"></i></a></p>
             <ul class="faico clear">
                 <li><a class="faicon-dribble" href="#"><i class="fab fa-dribbble"></i></a></li>
                 <li><a class="faicon-facebook" href="#"><i class="fab fa-facebook"></i></a></li>
@@ -264,19 +288,19 @@ foreach($result as $item)
 
 
         <div class="one_third">
-            <h6 class="heading">Đăng Nhập Để Mua Hàng</h6>
+            <h6 class="heading">Bình Luận ở đây</h6>
             <form method="post" action="#">
                 <fieldset>
                     <legend>Newsletter:</legend>
-                    <input class="btmspace-15" type="text" value="" placeholder="Name">
-                    <input class="btmspace-15" type="text" value="" placeholder="Email">
+                    <input class="btmspace-15" type="text" name="txtCmt" value="<?php echo isset($_POST["txtCmt"]) ? $_POST["txtCmt"] : "" ; ?>"  placeholder="Nọi dung">
+                    <input class="btmspace-15" type="text" name="txtName" value="<?php echo isset($_POST["txtName"]) ? $_POST["txtName"] : "" ; ?>"placeholder="Tên của bạn">
 
                     <ul class="dangnhap">
                         <li class="dangki">
-                            <button type="submit" value="submit">Submit</button>
+                            <button type="submit" name="submitcmt">Bình luận</button>
 
                         </li>
-                        <li> <button type="submit" value="submit">Submit</button></li>
+                      
                     </ul>
                 </fieldset>
             </form>
@@ -288,8 +312,121 @@ foreach($result as $item)
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
 <div class="wrapper row5">
-    <div id="copyright" class="hoc clear">
-        <!-- ################################################################################################ -->
+   
+<!-- comments container -->
+		<div class="comment_block">
+
+<!-- 
+    Comments are structured in the following way:
+
+    {ul} defines a new comment (singular)
+    {li} defines a new reply to the comment {ul}
+
+    example:
+
+    <ul>
+        <comment>
+            
+        </comment
+
+            <li>
+                <reply>
+
+                </reply>
+            </li>
+
+            <li>
+                <reply>
+
+                </reply>
+            </li>
+
+            <li>
+                <reply>
+
+                </reply>
+            </li>
+    </ul>
+
+ -->
+
+ <!-- used by #{user} to create a new comment -->
+
+
+
+ <!-- new comment -->
+ <div class="new_comment">
+
+    <!-- build comment -->
+     <ul class="user_comment">
+
+         <!-- current #{user} avatar -->
+       
+           
+         </div>
+         <?php  include_once("/entities/Comment.php"); 
+         
+         
+         
+         $cmt=comment::getcmt_id($_GET["id"]);
+
+            $result = $cmt;
+
+            foreach($result as $item)
+            {
+
+                extract($item);
+
+                echo '    
+                <li>
+                    
+                    <!-- current #{user} avatar -->
+                    <div class="user_avatar">
+                        <img src="https://th.bing.com/th/id/R.ead4e500f26211447f2b83a8fedb35b5?rik=e5WHTShSpipi3Q&pid=ImgRaw&r=0">
+                    </div><!-- the comment body --><div class="comment_body">
+                        <p><div class="replied_to"><pstyle="color:antiquewhite;"><span style="color:antiquewhite;" class="user">'.$Img.':</span>'.$Noidung.'</pstyle=>
+                    </div>
+           
+                    <!-- comments toolbar -->
+                    <div class="comment_toolbar">
+           
+                        <!-- inc. date and time -->
+                        <div class="comment_details">
+                            <ul>
+                                <li><i class="fa fa-clock-o"></i> 14:52</li>
+                                <li><i class="fa fa-calendar"></i> 04/01/2015</li>
+                                <li><i class="fa fa-pencil"></i> <span class="user">Andrew Johnson</span></li>
+                            </ul>
+                        </div><!-- inc. share/reply and love --><div class="comment_tools">
+                            <ul>
+                                <li><i class="fa fa-share-alt"></i></li>
+                                <li><i class="fa fa-reply"></i></li>
+                                <li><i class="fa fa-heart love"><span class="love_amt"> 4</span></i></li>
+                            </ul>
+                        </div>
+           
+                    </div>
+           
+           
+                </li>';
+            }
+         
+         ?>
+
+
+   
+
+        
+    
+
+     </ul>
+
+ </div>
+
+
+
+</div>
+</div>
         <!-- ################################################################################################ -->
     </div>
 </div>

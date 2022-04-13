@@ -40,7 +40,7 @@ include_once("/entities/danhmuc.php");
 <form method="post">
     <div class="row">
         <div class="lbltitle">
-            <label>Tên sản phẩm</label>
+            <label>Tên danh mục</label>
             <?php
 
 			if (isset($delete_dm)) {
@@ -54,7 +54,7 @@ include_once("/entities/danhmuc.php");
   
     <div class="row">
         <div class="submit">
-            <input type="submit" name="btnsubmit" value="Thêm sản phẩm"/>
+            <input type="submit" name="btnsubmit" value="Thêm danh mục"/>
         </div>
     </div>
 </form>

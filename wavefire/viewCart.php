@@ -13,7 +13,7 @@ $count = 0;
     <title></title>
     
 
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
    
     <link href="@BotDetect.Web.CaptchaUrls.Absolute.LayoutStyleSheetUrl" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
@@ -113,19 +113,19 @@ $count = 0;
                                         $a = $item['pro_gia'];
                                         $b = $item['Soluong'];
                                         $total_sp = $a * $b;
-
+                                        $price = $item['pro_gia'];
+                                       
                                         ?>
                                 
-                                <td class="text-right"><?php echo $item['pro_gia'];?></td>
-                                <td class="text-right"><?php echo $total_sp;
-
-                                    $total += $total_sp; ?> VNĐ</td>
+                                <td style="color:red;" class="text-right"><?php echo number_format($price, 0, '', ',');?> VNĐ</td>
+                                <td style="color:red;" class="text-right"><?php echo number_format($total_sp, 0, '', ',');
+ $total += $total_sp; ?> VNĐ</td>
                                 
                                 <td class="text-right">
                                     
                                 <form method="post" action="deletecart.php">
                     <input type="hidden" value="<?php echo $item['pro_id']; ?>" name="pro_id"/>
-                    <input onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này hay không?');" type="submit" value="Delete" name="delete"/>
+                    <input onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này hay không?');" class="fa fa-trash" aria-hidden="true" type="submit" value="Delete" name="delete"/>
                 </form> </td>
                             </tr>
 
@@ -160,7 +160,7 @@ $count = 0;
                             <td></td>
                             <td></td>
                             <td><strong>Tiền phải thanh toán </strong></td>
-                            <td class="text-right"><strong> <?php echo $total; ?> VNĐ </strong></td>
+                            <td style="color:red;" class="text-right"><strong > <?php echo number_format($total, 0, '', ','); ?> VNĐ </strong></td>
                         </tr>
                     </tfoot>
 
@@ -173,7 +173,7 @@ $count = 0;
             <div class="row">
                 <div class="col-sm-12  col-md-6">
 
-                    <a href="~/Home/Trangchu"> <button class="btn btn-block btn-light">Tiếp tục mua sắm</button></a>
+                    <a href="http://localhost/webxe/webPhpXe/wavefire/"> <button class="btn btn-block btn-light">Tiếp tục mua sắm</button></a>
 
                 </div>
                 <div class="col-sm-12 col-md-6 text-right">
@@ -199,7 +199,7 @@ $count = 0;
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Địa chỉ giao hàng</label>
-                            <input type="text" name="diachi" value="<?php echo isset($_POST["diachi"]) ? $_POST["diachi"] : "" ; ?>" />  
+                            <input type="text" name="diachi" value="<?php echo isset($_POST["diachi"]) ? $_POST["diachi"] : "" ; ?>" class="form-control"/>  
                         <div class="form-group">
                             <label>Họ Tên</label>
                             <input name="hoten" type="text" value="<?php echo isset($_POST["hoten"]) ? $_POST["hoten"] : "" ; ?>" class="form-control">
@@ -218,6 +218,7 @@ $count = 0;
                       
                        
                         <input type="submit" name="submit" class="btn btn-primary" value="Thanh Toán">
+                        <a href="http://localhost/webxe/webPhpXe/wavefire/"></a>
                     </div>
                 </form>
             </div>
@@ -232,7 +233,7 @@ $count = 0;
     ?>
 <?php
    
-
+   include_once("/pay.php");
     if(isset($_POST["submit"])){
 
         $diachi = $_POST["diachi"];
@@ -245,7 +246,7 @@ $mydate=getdate(date("U"));
         $newProduct = new oder( $diachi,$Tenkh,$sdt,$mail);
               
         $result = $newProduct ->save();
-      
+       
         if(empty($result))
         {
 
@@ -257,10 +258,15 @@ $mydate=getdate(date("U"));
             
                 $newdetail = new oderdetail($Soluong,$pro_gia,$pro_id,$sdt);
     
-     $result = $newdetail ->save();
-                  
-                         $students = deleteall();
-                         
+                     $res = $newdetail ->save();
+                  if(empty($res))
+                  {
+                    $students = deleteall();
+                    header("Location:pay.php");
+
+                  }
+                        
+                      
                         
                     
                
