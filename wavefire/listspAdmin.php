@@ -1,3 +1,35 @@
+<?php  include_once("/entities/add_sp.php"); ?>
+ 
+ <?php
+
+
+if(isset($_POST["submit"])){
+
+    $diachi = $_POST["diachi"];
+   
+$Tenkh=$_POST["hoten"];
+$sdt=$_POST["sdt"];
+$mail=$_POST["mail"];
+$Madm = $_POST["MaDanhmuc"];
+    $newProduct = new sp( $diachi,$Tenkh,$sdt,$mail,$Madm);
+
+    $result = $newProduct ->save();
+
+   
+    if(!$result)
+    {
+       echo " Thêm sản phẩm thành công";
+       header("Location:listspAdmin.php");
+     
+      
+    }
+    else {
+       
+    }
+}
+?>
+
+
 <?php
 include_once("/entities/sanpham.php");
    $sanpham = new Sanpham();
@@ -190,36 +222,7 @@ $students = getAllStudents();
 
 
   
-    <?php  include_once("/entities/add_sp.php"); ?>
- 
-	<?php
    
-
-   if(isset($_POST["submit"])){
-
-	   $diachi = $_POST["diachi"];
-	  
-$Tenkh=$_POST["hoten"];
-$sdt=$_POST["sdt"];
-$mail=$_POST["mail"];
-$Madm = $_POST["MaDanhmuc"];
-	   $newProduct = new sp( $diachi,$Tenkh,$sdt,$mail,$Madm);
-
-	   $result = $newProduct ->save();
-      
-	  
-	   if(!$result)
-	   {
-		  echo " thành công";
-        
-         
-		 
-	   }
-	   else {
-		  
-	   }
-   }
-?>
  
 
 

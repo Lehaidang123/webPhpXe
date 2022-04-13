@@ -4,7 +4,13 @@ $students = getAllStudents();
 $total = 0;
 $count = 0;
 ?>
- 
+ <?php  include_once("/entities/order.php");
+     include_once("/entities/oderdetail.php");
+    
+    
+    ?>
+
+
 <!DOCTYPE html>
 
 <html>
@@ -26,6 +32,9 @@ $count = 0;
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
 </head>
+
+
+
 <body>
        
 
@@ -191,7 +200,7 @@ $count = 0;
     <div id="myModal" class="modal fade">
         <div class="modal-dialog modal-login">
             <div class="modal-content">
-                <form method="post">
+                <form method="post" >
                     <div class="modal-header">
                         <h4 class="modal-title">Thanh toán</h4>
                         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -217,8 +226,8 @@ $count = 0;
                     <div class="modal-footer justify-content-between">
                       
                        
-                        <input type="submit" name="submit" class="btn btn-primary" value="Thanh Toán">
-                        <a href="http://localhost/webxe/webPhpXe/wavefire/"></a>
+                      
+                        <a href="http://localhost/webxe/webPhpXe/wavefire/">  <input type="submit" name="submit" class="btn btn-primary" value="Thanh Toán"></a>
                     </div>
                 </form>
             </div>
@@ -226,69 +235,12 @@ $count = 0;
     </div>
 
 
-    <?php  include_once("/entities/order.php");
-     include_once("/entities/oderdetail.php");
-    
-    
-    ?>
-<?php
-   
-   include_once("/pay.php");
-    if(isset($_POST["submit"])){
-
-        $diachi = $_POST["diachi"];
-       
-$Tenkh=$_POST["hoten"];
-$sdt=$_POST["sdt"];
-$mail=$_POST["mail"];
-$mydate=getdate(date("U"));
-                    echo "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]";
-        $newProduct = new oder( $diachi,$Tenkh,$sdt,$mail);
-              
-        $result = $newProduct ->save();
-       
-        if(empty($result))
-        {
-
-            foreach($students as $item)
-
-            {
-                extract($item);
-    
-            
-                $newdetail = new oderdetail($Soluong,$pro_gia,$pro_id,$sdt);
-    
-                     $res = $newdetail ->save();
-                  if(empty($res))
-                  {
-                    $students = deleteall();
-                    header("Location:pay.php");
-
-                  }
-                        
-                      
-                        
-                    
-               
-             
-            }
-
-        }
-        else{
-
-            echo ' roong';
-        }
-     
-       
-       
-    }
-?>
-
+ 
 
     
 <!-- Footer -->
 
-    
+
     
 </table>
    
@@ -376,3 +328,57 @@ $mydate=getdate(date("U"));
     }
 </style>
 </html>
+<?php
+ 
+    if(isset($_POST["submit"])){
+
+        $diachi = $_POST["diachi"];
+       
+$Tenkh=$_POST["hoten"];
+$sdt=$_POST["sdt"];
+$mail=$_POST["mail"];
+$mydate=getdate(date("U"));
+                    echo "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]";
+        $newProduct = new oder( $diachi,$Tenkh,$sdt,$mail);
+              
+        $result = $newProduct ->save();
+       
+        if(!$result)
+        {
+
+            foreach($students as $item)
+
+            {
+                extract($item);
+    
+            
+                $newdetail = new oderdetail($Soluong,$pro_gia,$pro_id,$sdt);
+            
+                     $res = $newdetail ->save();
+                 if(!$res){
+                   
+                    $students = deleteall();
+                    echo '<META http-equiv="refresh" content="0;URL=pay.php">';
+                 
+                  
+                 }
+                   
+                   
+
+                  
+                        
+                      
+                        
+                    
+               
+             
+            }
+         
+
+        }
+        
+     
+       
+       
+    }
+?>

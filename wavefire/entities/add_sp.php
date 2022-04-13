@@ -39,7 +39,7 @@ public $danhmuc;
     VALUES ('$this->tensp','$this->gia','$this->img','$this->mota','$this->danhmuc')";
     
     if (mysqli_query($conn, $sql)) {
-      echo "New record created successfully";
+
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }

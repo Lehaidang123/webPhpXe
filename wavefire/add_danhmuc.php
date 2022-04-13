@@ -25,8 +25,9 @@ include_once("/entities/danhmuc.php");
         $result = $newProduct ->save();
         if(!$result)
         {
-           echo " thành công";
+           echo " thành công"; 
            header("Location:add_danhmuc.php");
+          
         }
         else {
            
